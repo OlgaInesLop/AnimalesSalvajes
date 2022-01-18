@@ -1,3 +1,4 @@
+respaldo
 // https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content/Rugido.mp3
 
 import { Leon, Lobo, Oso, Serpiente, Aguila } from './animal.js'
@@ -76,7 +77,7 @@ const animalesSalvajes = (function(){
         console.log(arr_animales[arr_animales.length-1])
         // agregar imagenes
         // render(arr_animales[arr_animales.length-1])
-        render()
+        render3()
         // investigarAnimales()
     }
 
@@ -85,7 +86,38 @@ const animalesSalvajes = (function(){
         img_animal.innerHTML = html;
     }
 
-    function render() {
+    // function render(aniSalvaje) {
+    //     const html =`<div class="card" style="width: 18rem;">
+    //         <img src="assets/imgs/${aniSalvaje.imagen}" class="card-img-top" alt="AnimalSalvaje">
+    //         <div class="card-body" style="background-color: grey;">
+    //             <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">
+    //                 <img src="assets/imgs/audio.svg" alt="Sonido" style="width: 20px;">
+    //             </a>
+    //         </div>
+    //     </div>`
+    //     ini_animal.innerHTML = html;
+    // }
+
+    /*
+    function render2() {
+        let html = ''
+        arr_animales.forEach(aSalvaje => {
+            html += `<div class="px-3 pb-2 participante">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/imgs/${aSalvaje.imagen}" class="card-img-top" alt="AnimalSalvaje">
+                        <div class="card-body" style="background-color: grey;">
+                        <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">
+                        <img src="assets/imgs/audio.svg" alt="Sonido" style="width: 20px;">
+                        </a>
+                        </div>
+                </div>
+            </div>`
+        });
+        ini_animal.innerHTML = html;
+    }
+    */
+
+    function render3() {
         let html = ''
         arr_animales.forEach(aSalvaje => {
         html += `<div class="px-3 pb-2 participante">
@@ -100,7 +132,25 @@ const animalesSalvajes = (function(){
         ini_animal.innerHTML = html;
     }
 
+    /*
+    function investigarAnimales() {
+
+        console.log('investigarAnimales')
+        
+        let html2 = `<div class="card" style="width: 18rem;">
+                    <img src="assets/imgs/Aguila.png" class="card-img-top" alt="Aguila">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Edad</li>
+                        <li class="list-group-item">Comentarios</li>
+                        <li class="list-group-item">comentario brbrbrbrbr</li>
+                    </ul>
+                </div>`;
+        son_animal.innerHTML = html2;
+    }
+    */
+
     return {Iniciar: Iniciar}
 })()
 
 animalesSalvajes.Iniciar()
+

@@ -1,4 +1,4 @@
-export default class Animal{
+class Animal{
     #nombre
     #edad
     #imagen
@@ -21,7 +21,7 @@ export default class Animal{
     }
 
     get imagen() {
-        return `<img src="assets/imgs/${this.#imagen}>`
+        return this.#imagen
     }
 
     get comentarios() {
@@ -33,24 +33,25 @@ export default class Animal{
         return url+`${this.#sonido}`
     }
 }
-/*
-export default class Leon extends Animal{
+
+class Leon extends Animal{
     rugir() {}
 }
 
-export default class Lobo extends Animal{
+class Lobo extends Animal{
     aullar(){}
 }
 
-export default class Oso extends Animal{
+class Oso extends Animal{
     grunir(){}
 }
 
-export default class Serpiente extends Animal{
+class Serpiente extends Animal{
     sisear(){}
 }
 
-export default class Aguila extends Animal{
+class Aguila extends Animal{
     chillar(){}
 }
-*/
+
+export { Leon, Lobo, Oso, Serpiente, Aguila }
