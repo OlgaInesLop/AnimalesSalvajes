@@ -21,7 +21,7 @@ export default class Animal{
     }
 
     get imagen() {
-        return this.#imagen
+        return `<img src="assets/imgs/${this.#imagen}>`
     }
 
     get comentarios() {
@@ -29,10 +29,11 @@ export default class Animal{
     }
 
     get sonido() {
-        return this.#sonido
+        const url = 'https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content/'
+        return url+`${this.#sonido}`
     }
 }
-
+/*
 export default class Leon extends Animal{
     rugir() {}
 }
@@ -52,3 +53,4 @@ export default class Serpiente extends Animal{
 export default class Aguila extends Animal{
     chillar(){}
 }
+*/
