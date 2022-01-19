@@ -1,5 +1,3 @@
-// https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content/Rugido.mp3
-
 import { Leon, Lobo, Oso, Serpiente, Aguila } from './animales.js'
 import getDatosAnimales from './consultar.js'
 import getInvestigaAnimales from './investigar.js'
@@ -14,25 +12,24 @@ const animalesSalvajes = (function(){
     const ini_animal = document.getElementById('Animales')
     const img_animal = document.getElementById('preview')
     const btn_animal = document.getElementById('btnRegistrar')
-    const info_animal = document.getElementById('prubamod')
-    // const mod_animal = document.getElementsByClassName('modalbody')[0]
-    // const mod_animal = document.getElementsById('datosalva')
+    const sonido_animal = document.getElementById('player')
+    const mod_animal = document.getElementsByClassName('an_salvajes')[0]
 
     //Eventhandler
     btn_animal.addEventListener('click', clickAgregar)
+    $('#exampleModal').on('show.bs.modal', showModalHandler)
     //    ('click',investigarAnimales)
 
     async function Iniciar() {
         state = await getDatosAnimales.getDatos()
         console.log(state.animales)
-        console.log(state.animales[4].name)
-
     }
 
     function agregarAnimal(datos) {
         const bca_animal = state.animales.find(busca_ani => busca_ani.name === datos.tipo_animal)
         const dat_sonido = bca_animal.sonido
         const dat_imagen = bca_animal.imagen
+        muestraAniSalvaje(dat_imagen);
 
         let nuevoAnimal;
         switch (datos.tipo_animal) {
@@ -56,7 +53,6 @@ const animalesSalvajes = (function(){
                 break;
         }
         arr_animales.push(nuevoAnimal);
-        muestraAniSalvaje(dat_imagen);
     }
 
     async function clickAgregar(e) {
@@ -66,19 +62,14 @@ const animalesSalvajes = (function(){
           edad: form.edad.value,
           comentario: form.comentarios.value
         };
-        console.log(datos.tipo_animal)
+        console.log(datos)
         agregarAnimal(datos);
-        
-        console.log(arr_animales.length)
-        console.log(arr_animales[arr_animales.length-1])
-        // agregar imagenes
-        // render(arr_animales[arr_animales.length-1])
+        console.log(arr_animales)
+        animal.selectedIndex = 0;
+        edad.selectedIndex = 0;
         render()
-        info_animal.innerHTML = getInvestigaAnimales.getInvestigar(arr_animales[arr_animales.length-1])
-        // mod_animal.innerHTML = getInvestigaAnimales.getInvestigar(arr_animales[arr_animales.length-1])
-
-        console.log(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
-        
+        alert(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
+        // console.log(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
     }
 
     function muestraAniSalvaje(imagenAnimal) {
@@ -86,22 +77,29 @@ const animalesSalvajes = (function(){
         img_animal.innerHTML = html;
     }
 
+    function showModalHandler(e) {
+        const index = e.relatedTarget.dataset.index
+        mod_animal.innerHTML = getInvestigaAnimales.getInvestigar(arr_animales[index])
+    }
+
     function render() {
-        let html = ''
-        arr_animales.forEach(aSalvaje => {
-        html += `<div class="px-3 pb-2 participante">
-            <div class="card" style="width: 18rem;">
-                <div class="bg-dark text-white">
-                    <img height="200" src="assets/imgs/${aSalvaje.imagen}" data-toggle="modal" data-target="#exampleModal" onclick="modalDetails('${aSalvaje}')" />
-                <div>
-                <button onclick="playSound('')" class="btn btn-secondary w-100"> <img height="30" src="assets/imgs/audio.svg" /> </button>
-            </div>
-        </div>`
-        });
-        ini_animal.innerHTML = html;
+        if (arr_animales.length < 1) { return }
+
+        const html = arr_animales.map((aSalvaje, index) => (`<div class="card" style="width: 18rem;">
+        <img src="/assets/imgs/${aSalvaje.imagen}" class="card-img-top" alt="AnimalSalvaje" data-toggle="modal" data-target="#exampleModal" data-index="${index}">
+        <div class="card-body" style="background-color: grey;">
+            <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">
+                <img src="assets/imgs/audio.svg" alt="Sonido" style="width: 20px;">
+            </a>
+        </div>
+      </div>`));
+        ini_animal.innerHTML = html.join('');
     }
 
     return {Iniciar: Iniciar}
 })()
 
 animalesSalvajes.Iniciar()
+
+
+

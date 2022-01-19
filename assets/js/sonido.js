@@ -1,6 +1,8 @@
 const getSonidoAnimal = (() => {
+// https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content/Rugido.mp3
 
     const getSonido =  (AnimalSalvaje) => {
+
         const tipo_animal = AnimalSalvaje.nombre
         console.log(tipo_animal)
         let dat_sonido = ''
