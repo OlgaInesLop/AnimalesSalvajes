@@ -68,8 +68,6 @@ const animalesSalvajes = (function(){
         animal.selectedIndex = 0;
         edad.selectedIndex = 0;
         render()
-        alert(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
-        // console.log(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
     }
 
     function muestraAniSalvaje(imagenAnimal) {
