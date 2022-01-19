@@ -35,23 +35,33 @@ class Animal{
 }
 
 class Leon extends Animal{
-    rugir() {}
+    rugir() {
+        return `Por implementar RUGIR ${this.nombre}`
+    }
 }
 
 class Lobo extends Animal{
-    aullar(){}
+    aullar(){
+        return `Por implementar AULLAR ${this.nombre}`
+    }
 }
 
 class Oso extends Animal{
-    grunir(){}
+    grunir(){
+        return `Por implementar GRUÑIR ${this.nombre}`
+    }
 }
 
 class Serpiente extends Animal{
-    sisear(){}
+    sisear(){
+        return `Por implementar SISEAR ${this.nombre}`
+    }
 }
 
 class Aguila extends Animal{
-    chillar(){}
+    chillar(){
+        return `Por implementar CHILLAR ${this.nombre}`
+    }
 }
 
 export { Leon, Lobo, Oso, Serpiente, Aguila }

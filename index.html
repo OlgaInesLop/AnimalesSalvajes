@@ -82,21 +82,34 @@
             </div>
           </div>
         </div>
-
+        </form>
         <audio id="player" class="d-none"></audio>
+
+        <div id="prubamod"></div>
+
+            <!-- Modal artes marciales
+            <div class="modal fade" id="imagenesModal" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center">
+                  <div class="personajes m-auto">
+                    No se encontraron imágenes de este personaje
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div> -->
 
         <div class="modal fade" id="exampleModal">
           <div class="modal-dialog modal-dialog-centered w-25" role="document">
             <div class="modal-content bg-dark">
               <!-- <div class="modal_body" id="modalEmergente"></div> -->
-              <div class="modal_body">...</div>
-              <!-- <div class="modal-body">
-                <img src="assets/imgs/Aguila.png" class="card-img-top" alt="AnimalSalvaje">
-              </div> -->
+              <div class="modalbody" id="datosalva">...</div>
+
             </div>
           </div>
         </div>
-      </form>
+      
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -107,7 +120,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
+   
+    <script type="module" src="assets/js/consultar.js"></script>
+    <script type="module" src="assets/js/investigar.js"></script>
+    <script type="module" src="assets/js/sonido.js"></script>
     <script type="module" src="assets/js/index.js"></script>
-    <!-- <script type="module" src="assets/js/investigar.js"></script> -->
+
   </body>
 </html>

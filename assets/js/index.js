@@ -1,35 +1,32 @@
 // https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content/Rugido.mp3
 
-import { Leon, Lobo, Oso, Serpiente, Aguila } from './animal.js'
+import { Leon, Lobo, Oso, Serpiente, Aguila } from './animales.js'
+import getDatosAnimales from './consultar.js'
+import getInvestigaAnimales from './investigar.js'
+import getSonidoAnimal from './sonido.js'
 
 const animalesSalvajes = (function(){
-    let state; // = {}
+    let state = {}
     let arr_animales = []
-    let arr_json = []
-    const url = "/animales.json"
-    
+       
     //DOMCache
     const form = document.querySelector("form");
     const ini_animal = document.getElementById('Animales')
     const img_animal = document.getElementById('preview')
-    // const son_animal = document.getElementById('modalEmergente')
     const btn_animal = document.getElementById('btnRegistrar')
-    // const info_animal = document.getElementById('exampleModal')
+    const info_animal = document.getElementById('prubamod')
+    // const mod_animal = document.getElementsByClassName('modalbody')[0]
+    // const mod_animal = document.getElementsById('datosalva')
 
     //Eventhandler
     btn_animal.addEventListener('click', clickAgregar)
     //    ('click',investigarAnimales)
 
     async function Iniciar() {
-        state = await getDatosAnimales()
+        state = await getDatosAnimales.getDatos()
         console.log(state.animales)
         console.log(state.animales[4].name)
 
-    }
-
-    async function getDatosAnimales() {
-        const respuesta = await fetch(url)
-        return respuesta.json()
     }
 
     function agregarAnimal(datos) {
@@ -55,7 +52,7 @@ const animalesSalvajes = (function(){
                 nuevoAnimal = new Aguila(datos.tipo_animal, datos.edad,dat_imagen,datos.comentario,dat_sonido)
                 break;                                            
             default:
-                console.log('Error tipo animal invalido!!!')
+                console.error('Error tipo animal invalido!!!')
                 break;
         }
         arr_animales.push(nuevoAnimal);
@@ -77,11 +74,15 @@ const animalesSalvajes = (function(){
         // agregar imagenes
         // render(arr_animales[arr_animales.length-1])
         render()
-        // investigarAnimales()
+        info_animal.innerHTML = getInvestigaAnimales.getInvestigar(arr_animales[arr_animales.length-1])
+        // mod_animal.innerHTML = getInvestigaAnimales.getInvestigar(arr_animales[arr_animales.length-1])
+
+        console.log(getSonidoAnimal.getSonido(arr_animales[arr_animales.length-1]))
+        
     }
 
     function muestraAniSalvaje(imagenAnimal) {
-        const html = `<img src="assets/imgs/${imagenAnimal}" alt="Aguila" style="height: 200px;">`
+        const html = `<img src="assets/imgs/${imagenAnimal}" alt="Animal" style="height: 200px; width: 200px;" class="card-img-top">`
         img_animal.innerHTML = html;
     }
 
